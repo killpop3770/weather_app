@@ -1,0 +1,1 @@
+pub const OWM_API_KEY: &str = "";
