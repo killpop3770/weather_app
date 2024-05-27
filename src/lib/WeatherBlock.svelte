@@ -28,18 +28,42 @@ interface WeatherData {
 </script>
 
 <div id="main">
-<input type="text" id="search_input_for_city" bind:value={address}/>
-<button on:click={request_weather_info}>
-  Find weather! 
-</button>
-<input type="text" id="avg_temp" value={weather_data?.temp}/>
-<input type="text" id="avg_temp_min" value={weather_data?.temp_min}/>
-<input type="text" id="avg_temp_max" value={weather_data?.temp_max}/>
+  
+  <div class="weather_element">
+    <label for="search_input_for_city">Avg temp: </label>
+    <input type="text" id="search_input_for_city" bind:value={address}/>
+  </div>
+
+  <button on:click={request_weather_info}>
+    Find weather! 
+  </button>
+
+  <div class="weather_element">
+    <label for="avg_temp">Avg temp: </label>
+    <input type="text" id="avg_temp" value={weather_data?.temp.toFixed(1)||'0.0'}/>
+  </div>
+  <div class="weather_element">
+    <label for="avg_temp_min">Min temp: </label>
+    <input type="text" id="avg_temp_min" value={weather_data?.temp_min.toFixed(1)||'0.0'}/>
+  </div>
+  <div class="weather_element">
+    <label for="avg_temp_max">Max temp: </label>
+    <input type="text" id="avg_temp_max" value={weather_data?.temp_max.toFixed(1)||'0.0'}/>
+  </div>
 </div>
 
 <style>
+  
   #main{
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
   }
+  
+  .weather_element {
+    display:flex; 
+    flex-direction: row; 
+    justify-content: center; 
+    align-items: center;
+  }
+
 </style>
